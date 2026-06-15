@@ -5,6 +5,113 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIYAZoo - Riwayat Pemesanan</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .riwayat-kosong {
+      text-align: center;
+      padding: 60px 20px;
+      color: #888;
+    }
+    .riwayat-kosong .icon-kosong { font-size: 4rem; margin-bottom: 16px; }
+    .riwayat-kosong p { font-size: 1rem; margin-bottom: 20px; }
+    .btn-ke-layanan {
+      display: inline-block;
+      background: #2d6a4f;
+      color: white;
+      padding: 11px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn-ke-layanan:hover { background: #1b4332; }
+
+    .riwayat-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .riwayat-header h2 { margin: 0; }
+
+    .jumlah-pesanan {
+      font-size: 0.88rem;
+      color: #888;
+      margin-bottom: 16px;
+    }
+
+    .tabel-wrapper {
+      overflow-x: auto;
+    }
+
+    .tabel-riwayat {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    .tabel-riwayat thead tr {
+      background: #2d6a4f;
+      color: white;
+    }
+
+    .tabel-riwayat th {
+      padding: 13px 16px;
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tabel-riwayat td {
+      padding: 12px 16px;
+      border-bottom: 1px solid #e8f5e9;
+      color: #333;
+      vertical-align: middle;
+    }
+
+    .tabel-riwayat tbody tr:hover {
+      background: #f0faf4;
+    }
+
+    .tabel-riwayat tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .badge-status {
+      display: inline-block;
+      background: #d8f3dc;
+      color: #1b4332;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .total-harga {
+      font-weight: 700;
+      color: #2d6a4f;
+      white-space: nowrap;
+    }
+
+    .no-pesanan {
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+
+    .btn-hapus-semua {
+      background: none;
+      border: 1px solid #e57373;
+      color: #e57373;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-hapus-semua:hover { background: #e57373; color: white; }
+  </style>
 </head>
 <body>
 
@@ -21,15 +128,104 @@
     </ul>
   </nav>
 
-  <main class="coming-soon-page">
-    <p>Coming Soon</p>
-    <a href="index.html">Kembali ke Beranda</a>
+  <main>
+    <section class="fade-in">
+      <div class="riwayat-header">
+        <h2>📋 Riwayat Pemesanan</h2>
+        <button class="btn-hapus-semua" id="btnHapusSemua" onclick="hapusSemua()" style="display:none;">🗑️ Hapus Semua</button>
+      </div>
+
+      <div id="kontenRiwayat"></div>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2026 SIYAZoo &mdash; Sistem Informasi Layanan Zoo (Kebun Binatang)</p>
-    <p>Jl. Anggrek Raya No. 9, Kota Malaka | (061) 555-1289 | info@zooinfo.id</p>
+    <p>Jl. Anggrek Raya No. 9, Kota Malaka | (061) 555-1289 | info@siyazoo.id</p>
   </footer>
+
+  <script>
+    function formatTanggal(str) {
+      const d = new Date(str + 'T00:00:00');
+      return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+
+    function formatWaktu(isoStr) {
+      const d = new Date(isoStr);
+      return d.toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
+        + ' ' + d.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function tampilkanRiwayat() {
+      const riwayat = JSON.parse(localStorage.getItem('siyazoo_riwayat') || '[]');
+      const kontainer = document.getElementById('kontenRiwayat');
+
+      if (riwayat.length === 0) {
+        kontainer.innerHTML = `
+          <div class="riwayat-kosong">
+            <div class="icon-kosong">🎟️</div>
+            <p>Belum ada pemesanan. Yuk, pesan tiket kunjunganmu!</p>
+            <a href="layanan.html" class="btn-ke-layanan">Lihat Layanan</a>
+          </div>`;
+        document.getElementById('btnHapusSemua').style.display = 'none';
+        return;
+      }
+
+      document.getElementById('btnHapusSemua').style.display = 'inline-block';
+
+      let baris = '';
+      riwayat.forEach((item, index) => {
+        const totalStr = item.total
+          ? 'Rp ' + item.total.toLocaleString('id-ID')
+          : 'Hubungi kami';
+
+        baris += `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="no-pesanan">${item.id}</td>
+            <td>${item.nama}</td>
+            <td>${item.layanan}</td>
+            <td>${formatTanggal(item.tanggal)}</td>
+            <td>${item.jumlah}</td>
+            <td>${item.pembayaran}</td>
+            <td class="total-harga">${totalStr}</td>
+            <td>${formatWaktu(item.waktuPesan)}</td>
+            <td><span class="badge-status">✅ ${item.status}</span></td>
+          </tr>`;
+      });
+
+      kontainer.innerHTML = `
+        <p class="jumlah-pesanan">Menampilkan ${riwayat.length} data pemesanan</p>
+        <div class="tabel-wrapper">
+          <table class="tabel-riwayat">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>No. Pesanan</th>
+                <th>Nama</th>
+                <th>Layanan</th>
+                <th>Tgl Kunjungan</th>
+                <th>Jumlah</th>
+                <th>Pembayaran</th>
+                <th>Total</th>
+                <th>Dipesan Pada</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>${baris}</tbody>
+          </table>
+        </div>`;
+    }
+
+    function hapusSemua() {
+      if (confirm('Yakin ingin menghapus semua riwayat pemesanan?')) {
+        localStorage.removeItem('siyazoo_riwayat');
+        tampilkanRiwayat();
+      }
+    }
+
+    tampilkanRiwayat();
+  </script>
 
 </body>
 </html>

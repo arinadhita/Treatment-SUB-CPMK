@@ -1,0 +1,344 @@
+/* ================================
+   style.css - ZooInfo
+   ================================ */
+
+/* ── Reset ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #333;
+  background-color: #f2f8f2;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ================================
+   KEYFRAMES ANIMASI
+   ================================ */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes lineGrow {
+  from { width: 0; }
+  to   { width: 60px; }
+}
+
+/* ================================
+   HEADER
+   ================================ */
+header {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32, #388e3c);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  animation: slideDown 0.7s ease both;
+}
+
+header h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+
+header p {
+  font-size: 14px;
+  color: #c8e6c9;
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+
+/* ================================
+   NAV
+   ================================ */
+nav {
+  background-color: #1b5e20;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 10px 20px;
+}
+
+nav ul li a {
+  display: block;
+  padding: 8px 22px;
+  color: #c8e6c9;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #2e7d32;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ================================
+   MAIN - BERANDA
+   ================================ */
+main {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* ================================
+   SECTION
+   ================================ */
+section {
+  background-color: white;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 25px;
+  border: 1px solid #c8e6c9;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  animation: fadeInUp 0.7s ease both;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+section:hover {
+  box-shadow: 0 6px 20px rgba(46, 125, 50, 0.15);
+  transform: translateY(-3px);
+}
+
+section h2 {
+  font-size: 20px;
+  color: #2e7d32;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+section h2::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background-color: #2e7d32;
+  border-radius: 2px;
+  margin-top: 8px;
+  animation: lineGrow 0.6s ease both;
+}
+
+section h3 {
+  font-size: 15px;
+  color: #1b5e20;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}
+
+section p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* ================================
+   INFO GRID
+   ================================ */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.info-item {
+  background-color: #e8f5e9;
+  border: 1px solid #a5d6a7;
+  border-radius: 6px;
+  padding: 14px 15px;
+  font-size: 14px;
+  color: #1b5e20;
+  font-weight: bold;
+  text-align: center;
+  animation: popIn 0.5s ease both;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.info-item:nth-child(1) { animation-delay: 0.3s; }
+.info-item:nth-child(2) { animation-delay: 0.45s; }
+.info-item:nth-child(3) { animation-delay: 0.6s; }
+.info-item:nth-child(4) { animation-delay: 0.75s; }
+
+.info-item:hover {
+  background-color: #c8e6c9;
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 6px 14px rgba(46, 125, 50, 0.2);
+}
+
+/* ================================
+   TABEL
+   ================================ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+table thead {
+  background-color: #2e7d32;
+  color: white;
+}
+
+table th,
+table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #c8e6c9;
+}
+
+table tbody tr {
+  transition: background-color 0.25s ease;
+}
+
+table tbody tr:hover {
+  background-color: #e8f5e9;
+}
+
+/* ================================
+   JADWAL LIST
+   ================================ */
+.jadwal-list {
+  list-style: none;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.jadwal-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-bottom: 1px dashed #c8e6c9;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.25s ease, padding-left 0.25s ease;
+}
+
+.jadwal-list li:last-child {
+  border-bottom: none;
+}
+
+.jadwal-list li:hover {
+  background-color: #f1f8f1;
+  padding-left: 20px;
+}
+
+.hari {
+  font-weight: bold;
+  color: #2e7d32;
+}
+
+/* ================================
+   KONTAK LIST
+   ================================ */
+.kontak-list {
+  list-style: none;
+  margin-top: 10px;
+}
+
+.kontak-list li {
+  padding: 11px 12px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  color: #444;
+  border-radius: 4px;
+  transition: background-color 0.25s ease, padding-left 0.25s ease;
+}
+
+.kontak-list li:last-child {
+  border-bottom: none;
+}
+
+.kontak-list li:hover {
+  background-color: #e8f5e9;
+  padding-left: 20px;
+}
+
+/* ================================
+   COMING SOON PAGE
+   Polos, tidak ada desain
+   ================================ */
+.coming-soon-page {
+  padding: 30px 20px;
+}
+
+.coming-soon-page a {
+  color: #2e7d32;
+  text-decoration: underline;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
+footer {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  color: #c8e6c9;
+  text-align: center;
+  padding: 25px 20px;
+  font-size: 13px;
+  line-height: 1.9;
+  margin-top: 10px;
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+@media (max-width: 600px) {
+  header h1 { font-size: 24px; }
+
+  nav ul { justify-content: flex-start; }
+
+  nav ul li a {
+    padding: 7px 12px;
+    font-size: 13px;
+  }
+
+  .info-grid { grid-template-columns: 1fr 1fr; }
+
+  table th,
+  table td {
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .jadwal-list li { flex-direction: column; gap: 3px; }
+
+  section:hover { transform: none; }
+}

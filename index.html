@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Judul halaman yang tampil di tab browser -->
+  <title>SIYAZoo - Beranda</title>
+  <!-- Menghubungkan file CSS eksternal untuk styling tampilan -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===================== HEADER ===================== -->
+  <!-- Bagian kepala halaman: menampilkan nama sistem dan deskripsi singkat -->
+  <header>
+    <h1>🦁 SIYAZoo</h1>
+    <p>Sistem Informasi Layanan Zoo (Kebun Binatang)</p>
+  </header>
+
+  <!-- ===================== NAVIGASI ===================== -->
+  <!-- Menu navigasi utama untuk berpindah antar halaman -->
+  <nav>
+    <ul>
+      <!-- Link aktif menandakan halaman yang sedang dibuka -->
+      <li><a href="index.html" class="active">Beranda</a></li>
+      <li><a href="layanan.html">Layanan</a></li>
+      <li><a href="riwayat.html">Riwayat Pemesanan</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===================== KONTEN UTAMA ===================== -->
+  <main>
+    <!-- SECTION 1: Deskripsi Umum Sistem -->
+    <!-- Menampilkan pesan selamat datang dan informasi ringkas kebun binatang -->
+    <section class="fade-in">
+      <h2>Selamat Datang di SIYAZoo</h2>
+      <p>
+        SIYAZoo adalah sistem informasi resmi Kebun Binatang Kota Hijau yang menyediakan
+        berbagai informasi seputar koleksi hewan, jadwal kunjungan, harga tiket, dan
+        fasilitas yang tersedia. Temukan pengalaman wisata alam yang menyenangkan
+        bersama keluarga dan orang-orang tercinta.
+      </p>
+
+      <!-- Grid informasi statistik kebun binatang -->
+      <div class="info-grid">
+        <div class="info-item">🐾 200+ Koleksi Hewan</div>
+        <div class="info-item">🌳 Area Seluas 15 Hektar</div>
+        <div class="info-item">📅 Buka Setiap Hari</div>
+        <div class="info-item">🅿️ Parkir Tersedia</div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: Tabel Koleksi Hewan -->
+    <!-- Menampilkan daftar hewan yang ada di kebun binatang beserta informasinya -->
+    <section class="fade-in" style="animation-delay: 0.15s;">
+      <h2>🐘 Koleksi Hewan</h2>
+
+      <!-- Tabel berisi data hewan: nama, asal, zona, dan jumlah -->
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Hewan</th>
+            <th>Asal</th>
+            <th>Zona</th>
+            <th>Jumlah</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data hewan ditampilkan per baris -->
+          <tr>
+            <td>🦁 Singa Afrika</td>
+            <td>Afrika</td>
+            <td>Zona Savana</td>
+            <td>4 ekor</td>
+          </tr>
+          <tr>
+            <td>🐘 Gajah Sumatera</td>
+            <td>Indonesia</td>
+            <td>Zona Tropis</td>
+            <td>3 ekor</td>
+          </tr>
+          <tr>
+            <td>🦒 Jerapah</td>
+            <td>Afrika</td>
+            <td>Zona Savana</td>
+            <td>2 ekor</td>
+          </tr>
+          <tr>
+            <td>🐊 Buaya Muara</td>
+            <td>Indonesia</td>
+            <td>Zona Reptil</td>
+            <td>6 ekor</td>
+          </tr>
+          <tr>
+            <td>🦅 Elang Jawa</td>
+            <td>Indonesia</td>
+            <td>Zona Burung</td>
+            <td>5 ekor</td>
+          </tr>
+          <tr>
+            <td>🐧 Penguin</td>
+            <td>Antartika</td>
+            <td>Zona Dingin</td>
+            <td>12 ekor</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- SECTION 3: Jadwal dan Harga Tiket -->
+    <!-- Menampilkan jam operasional dan daftar harga tiket masuk -->
+    <section class="fade-in" style="animation-delay: 0.3s;">
+      <h2>🎟️ Jadwal &amp; Harga Tiket</h2>
+
+      <!-- Sub-bagian jam operasional -->
+      <h3>Jam Operasional</h3>
+      <ul class="jadwal-list">
+        <li><span class="hari">Senin – Jumat</span><span>08.00 – 17.00 WIB</span></li>
+        <li><span class="hari">Sabtu – Minggu</span><span>07.00 – 18.00 WIB</span></li>
+        <li><span class="hari">Hari Libur Nasional</span><span>07.00 – 18.00 WIB</span></li>
+      </ul>
+
+      <!-- Sub-bagian harga tiket berdasarkan kategori pengunjung -->
+      <h3>Harga Tiket</h3>
+      <ul class="jadwal-list">
+        <li><span class="hari">Dewasa</span><span>Rp 50.000</span></li>
+        <li><span class="hari">Anak-anak (3–12 tahun)</span><span>Rp 30.000</span></li>
+        <li><span class="hari">Lansia (60+ tahun)</span><span>Rp 25.000</span></li>
+        <!-- Harga khusus untuk kunjungan rombongan -->
+        <li><span class="hari">Rombongan (min. 20 orang)</span><span>Diskon 20%</span></li>
+      </ul>
+    </section>
+
+    <!-- SECTION 4: Informasi Kontak dan Lokasi -->
+    <!-- Menampilkan detail kontak dan alamat kebun binatang -->
+    <section class="fade-in" style="animation-delay: 0.45s;">
+      <h2>📍 Kontak &amp; Lokasi</h2>
+      <ul class="kontak-list">
+        <li>📍 <strong>Alamat:</strong> Jl. Anggrek Raya No. 9, Kota Malaka</li>
+        <li>📞 <strong>Telepon:</strong> (061) 555-1289</li>
+        <li>📧 <strong>Email:</strong> info@siyazoo.id</li>
+        <li>🌐 <strong>Website:</strong> www.siyazoo.id</li>
+        <li>🕐 <strong>Jam Buka:</strong> Setiap hari, 07.00 – 18.00 WIB</li>
+      </ul>
+    </section>
+
+  </main>
+  <!-- ===================== AKHIR KONTEN UTAMA ===================== -->
+  <!-- ===================== FOOTER ===================== -->
+  <!-- Bagian bawah halaman berisi informasi hak cipta dan kontak singkat -->
+  <footer>
+    <p>&copy; 2026 SIYAZoo &mdash; Sistem Informasi Layanan Zoo (Kebun Binatang)</p>
+    <p>Jl. Anggrek Raya No. 9, Kota Malaka | (061) 555-1289 | info@siyazoo.id</p>
+  </footer>
+
+</body>
+</html>

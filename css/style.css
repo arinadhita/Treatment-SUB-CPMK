@@ -1,18 +1,37 @@
+/* 
+ * File ini berisi semua styling untuk website SIYAZoo
+ * Mencakup:
+ * 1. Reset CSS dan global styling
+ * 2. Header, navigasi, dan footer
+ * 3. Halaman Beranda (info grid, tabel, jadwal, kontak)
+ * 4. Halaman Layanan (hero, card layanan, modal form)
+ * 5. Halaman Riwayat (tabel, tombol aksi)
+ * 6. Animasi dan efek hover
+ * 7. Responsive design (mobile, tablet, desktop)
+ * 
+ * Penulis: SIYAZoo Team
+ * Tanggal: 2026
+ * ========================================================
+ */ 
+
 /* ==================== RESET & GLOBAL ==================== */
+/* Reset margin, padding, dan box-sizing untuk semua elemen */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Style dasar body: font, background gradien, warna teks */
 body {
   font-family: 'Poppins', 'Segoe UI', 'Inter', sans-serif;
-  background: linear-gradient(145deg, #e0f2e0 0%, #c5e0c5 100%);
+  background: linear-gradient(145deg, #e0f2e0 0%, #c5e0c5 100%); /* Gradien hijau muda */
   min-height: 100vh;
   color: #2d3e2b;
   position: relative;
 }
 
+/* Background pattern: radial gradient dengan efek transparan */
 body::before {
   content: '';
   position: fixed;
@@ -21,13 +40,14 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: radial-gradient(circle at 10% 20%, rgba(76,175,80,0.05) 0%, transparent 50%);
-  pointer-events: none;
+  pointer-events: none; /* Agar tidak mengganggu klik */
   z-index: -1;
 }
 
-/* ==================== SCROLLBAR ==================== */
+/* ==================== SCROLLBAR CUSTOM ==================== */
+/* Mendesain scrollbar agar lebih menarik (hanya untuk browser berbasis Webkit) */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 10px; /* Lebar scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -36,11 +56,12 @@ body::before {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  background: linear-gradient(135deg, #4caf50, #2e7d32); /* Gradien hijau */
   border-radius: 10px;
 }
 
 /* ==================== HEADER ==================== */
+/* Style untuk header halaman: background gradien, shadow, efek ikon */
 header {
   background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #43a047 100%);
   color: white;
@@ -48,9 +69,10 @@ header {
   padding: 2.5rem 1rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   position: relative;
-  overflow: hidden;
+  overflow: hidden; /* Agar pseudo-element tidak keluar */
 }
 
+/* Ikon hewan di background header (dekoratif) */
 header::before {
   content: '🐘 🦁 🦒 🐧 🦅 🐨';
   position: absolute;
@@ -61,6 +83,7 @@ header::before {
   white-space: nowrap;
 }
 
+/* Judul header dengan gradient text dan shadow */
 header h1 {
   font-size: 2.8rem;
   margin-bottom: 0.5rem;
@@ -78,15 +101,17 @@ header p {
 }
 
 /* ==================== NAVIGASI ==================== */
+/* Navigasi sticky: tetap di atas saat scroll, dengan efek glassmorphism */
 nav {
   background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px); /* Efek blur untuk glassmorphism */
   box-shadow: 0 5px 20px rgba(0,0,0,0.1);
   position: sticky;
   top: 0;
   z-index: 100;
 }
 
+/* Menu navigasi: flexbox tengah, maksimal lebar 1200px */
 nav ul {
   display: flex;
   justify-content: center;
@@ -96,6 +121,7 @@ nav ul {
   margin: 0 auto;
 }
 
+/* Style link navigasi */
 nav ul li a {
   display: block;
   padding: 1rem 2rem;
@@ -106,6 +132,7 @@ nav ul li a {
   position: relative;
 }
 
+/* Efek garis bawah pada link saat hover (animasi dari tengah) */
 nav ul li a::before {
   content: '';
   position: absolute;
@@ -119,6 +146,7 @@ nav ul li a::before {
   border-radius: 3px;
 }
 
+/* Lebarkan garis bawah saat hover atau aktif */
 nav ul li a:hover::before,
 nav ul li a.active::before {
   width: 60%;
@@ -129,22 +157,25 @@ nav ul li a:hover {
   background: rgba(76, 175, 80, 0.08);
 }
 
+/* Link aktif memiliki background lebih gelap */
 nav ul li a.active {
   color: #2e7d32;
   background: rgba(76, 175, 80, 0.12);
 }
 
-/* ==================== MAIN ==================== */
+/* ==================== MAIN CONTENT ==================== */
+/* Container utama konten, maksimal lebar 1200px */
 main {
   max-width: 1200px;
   margin: 2rem auto;
   padding: 0 1.5rem;
 }
 
-/* ==================== ANIMATION ==================== */
+/* ==================== ANIMASI FADE IN ==================== */
+/* Animasi fade-in dari bawah untuk semua elemen dengan class .fade-in */
 .fade-in {
   animation: fadeInUp 0.6s ease forwards;
-  opacity: 0;
+  opacity: 0; /* Awalnya transparan, animasi akan mengubahnya */
 }
 
 @keyframes fadeInUp {
@@ -159,6 +190,7 @@ main {
 }
 
 /* ==================== TYPOGRAPHY ==================== */
+/* Style heading 2: gradient text + garis bawah */
 h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -170,6 +202,7 @@ h2 {
   position: relative;
 }
 
+/* Garis bawah gradien untuk h2 */
 h2::after {
   content: '';
   position: absolute;
@@ -181,6 +214,7 @@ h2::after {
   border-radius: 4px;
 }
 
+/* Style heading 3: gradient text */
 h3 {
   font-size: 1.3rem;
   margin: 1rem 0 0.8rem 0;
@@ -190,14 +224,16 @@ h3 {
   color: transparent;
 }
 
-/* ==================== INFO GRID ==================== */
+/* ==================== INFO GRID (BERANDA) ==================== */
+/* Grid untuk menampilkan 4 info penting kebun binatang */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
   gap: 1.5rem;
   margin: 2rem 0;
 }
 
+/* Card info individual dengan efek glassmorphism */
 .info-item {
   background: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(5px);
@@ -207,10 +243,11 @@ h3 {
   font-size: 1.1rem;
   font-weight: 600;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek bounce */
   border: 1px solid rgba(76, 175, 80, 0.2);
 }
 
+/* Efek hover pada card info */
 .info-item:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 35px rgba(76, 175, 80, 0.25);
@@ -219,15 +256,17 @@ h3 {
 }
 
 /* ==================== TABEL ==================== */
+/* Style tabel untuk koleksi hewan dan riwayat */
 table {
   width: 100%;
   background: white;
   border-radius: 20px;
-  overflow: hidden;
+  overflow: hidden; /* Membuat border-radius berfungsi */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   margin: 1.5rem 0;
 }
 
+/* Header tabel dengan background gradien hijau */
 thead {
   background: linear-gradient(135deg, #2e7d32, #1b5e20);
   color: white;
@@ -241,6 +280,7 @@ thead th {
   letter-spacing: 1px;
 }
 
+/* Baris tabel dengan efek hover */
 tbody tr {
   transition: all 0.3s ease;
 }
@@ -255,6 +295,7 @@ td {
 }
 
 /* ==================== JADWAL LIST ==================== */
+/* Style untuk daftar jam operasional dan harga tiket */
 .jadwal-list {
   list-style: none;
   background: white;
@@ -264,6 +305,7 @@ td {
   margin: 1rem 0;
 }
 
+/* Setiap item jadwal */
 .jadwal-list li {
   display: flex;
   justify-content: space-between;
@@ -282,6 +324,7 @@ td {
   border-bottom: none;
 }
 
+/* Nama hari dengan gradient text */
 .jadwal-list li .hari {
   font-weight: 700;
   background: linear-gradient(135deg, #2e7d32, #4caf50);
@@ -290,6 +333,7 @@ td {
   color: transparent;
 }
 
+/* Nilai waktu/harga dengan gradient oranye */
 .jadwal-list li span:last-child {
   background: linear-gradient(135deg, #ff9800, #f57c00);
   -webkit-background-clip: text;
@@ -298,7 +342,8 @@ td {
   font-weight: 600;
 }
 
-/* ==================== KONTAK LIST (FIX - RAPI & CANTIK) ==================== */
+/* ==================== KONTAK LIST ==================== */
+/* Style untuk daftar kontak dan lokasi */
 .kontak-list {
   list-style: none;
   background: white;
@@ -326,6 +371,7 @@ td {
   border-bottom: none;
 }
 
+/* Label kontak (Alamat:, Telepon:, dll) dengan gradient text */
 .kontak-list li strong {
   font-weight: 700;
   min-width: 85px;
@@ -342,6 +388,7 @@ td {
 }
 
 /* ==================== LAYANAN HERO ==================== */
+/* Hero banner di halaman layanan */
 .layanan-hero {
   background: linear-gradient(135deg, #1b5e20, #2e7d32);
   color: white;
@@ -354,6 +401,7 @@ td {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
+/* Ikon hewan di background hero */
 .layanan-hero::before {
   content: '🐨 🐼 🦊 🐝 🦋';
   position: absolute;
@@ -363,6 +411,7 @@ td {
   opacity: 0.1;
 }
 
+/* Override style h2 di hero (warna putih, tanpa gradien) */
 .layanan-hero h2 {
   color: white;
   background: none;
@@ -381,6 +430,7 @@ td {
 }
 
 /* ==================== LAYANAN GRID ==================== */
+/* Grid untuk menampilkan card layanan (responsive) */
 .layanan-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -388,6 +438,7 @@ td {
   margin: 2rem 0;
 }
 
+/* Card layanan individual */
 .layanan-card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(5px);
@@ -401,6 +452,7 @@ td {
   overflow: hidden;
 }
 
+/* Efek shine pada card saat hover */
 .layanan-card::before {
   content: '';
   position: absolute;
@@ -422,34 +474,27 @@ td {
   border-color: #4caf50;
 }
 
+/* Icon layanan dengan animasi float */
 .layanan-icon {
   font-size: 4rem;
   margin-bottom: 1rem;
   animation: float 3s ease-in-out infinite;
 }
 
+/* Animasi float untuk icon */
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
 }
 
+/* Delay animasi untuk setiap card (efek berurutan) */
 .layanan-card:nth-child(2) .layanan-icon { animation-delay: 0.3s; }
 .layanan-card:nth-child(3) .layanan-icon { animation-delay: 0.6s; }
 .layanan-card:nth-child(4) .layanan-icon { animation-delay: 0.9s; }
 .layanan-card:nth-child(5) .layanan-icon { animation-delay: 1.2s; }
 .layanan-card:nth-child(6) .layanan-icon { animation-delay: 1.5s; }
 
-.layanan-card h3 {
-  margin-bottom: 0.8rem;
-}
-
-.layanan-card p {
-  color: #666;
-  font-size: 0.9rem;
-  line-height: 1.6;
-  margin-bottom: 1.2rem;
-}
-
+/* Badge harga dengan gradien oranye */
 .badge-harga {
   display: inline-block;
   background: linear-gradient(135deg, #ff9800, #f57c00);
@@ -467,6 +512,7 @@ td {
   transform: scale(1.05);
 }
 
+/* Tombol pesan dengan gradien hijau */
 .btn-pesan {
   background: linear-gradient(135deg, #4caf50, #2e7d32);
   color: white;
@@ -486,6 +532,7 @@ td {
 }
 
 /* ==================== INFO TAMBAHAN ==================== */
+/* Catatan pemesanan dengan background kuning */
 .info-tambahan {
   background: linear-gradient(135deg, #fff8e1, #ffecb3);
   border-radius: 25px;
@@ -496,6 +543,7 @@ td {
   overflow: hidden;
 }
 
+/* Ikon pin di background */
 .info-tambahan::before {
   content: '📌';
   position: absolute;
@@ -505,6 +553,7 @@ td {
   opacity: 0.1;
 }
 
+/* Override h3 di info tambahan (warna oranye tua) */
 .info-tambahan h3 {
   color: #e65100;
   background: none;
@@ -525,6 +574,7 @@ td {
 }
 
 /* ==================== MODAL ==================== */
+/* Overlay modal: background gelap dengan blur */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -542,11 +592,13 @@ td {
   transition: all 0.3s ease;
 }
 
+/* Modal aktif (terlihat) */
 .modal-overlay.aktif {
   visibility: visible;
   opacity: 1;
 }
 
+/* Kotak modal putih */
 .modal-box {
   background: white;
   border-radius: 30px;
@@ -559,10 +611,12 @@ td {
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
 }
 
+/* Saat aktif, modal membesar */
 .modal-overlay.aktif .modal-box {
   transform: scale(1);
 }
 
+/* Tombol tutup modal (X) */
 .btn-tutup {
   position: absolute;
   top: 1rem;
@@ -582,19 +636,7 @@ td {
   transform: rotate(90deg) scale(1.1);
 }
 
-.modal-box h3 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  font-size: 1.6rem;
-}
-
-.modal-box label {
-  display: block;
-  margin: 1rem 0 0.4rem 0;
-  font-weight: 600;
-  color: #2d3e2b;
-}
-
+/* Style input dan select dalam modal */
 .modal-box input,
 .modal-box select {
   width: 100%;
@@ -605,6 +647,7 @@ td {
   transition: all 0.3s;
 }
 
+/* Efek focus pada input */
 .modal-box input:focus,
 .modal-box select:focus {
   outline: none;
@@ -612,12 +655,14 @@ td {
   box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.2);
 }
 
+/* Footer modal dengan 2 tombol */
 .modal-footer {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
 }
 
+/* Tombol batal dan konfirmasi */
 .btn-batal,
 .btn-konfirmasi {
   flex: 1;
@@ -650,7 +695,8 @@ td {
   box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
 }
 
-/* ==================== RIWAYAT ==================== */
+/* ==================== RIWAYAT PAGE ==================== */
+/* Header halaman riwayat (judul + tombol hapus semua) */
 .riwayat-header {
   display: flex;
   justify-content: space-between;
@@ -664,6 +710,7 @@ td {
   margin-bottom: 0;
 }
 
+/* Tombol hapus semua */
 .btn-hapus-semua {
   background: linear-gradient(135deg, #f44336, #d32f2f);
   color: white;
@@ -681,6 +728,7 @@ td {
   box-shadow: 0 8px 20px rgba(244, 67, 54, 0.4);
 }
 
+/* Badge jumlah pesanan */
 .jumlah-pesanan {
   background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
   padding: 0.6rem 1.2rem;
@@ -691,14 +739,17 @@ td {
   color: #2e7d32;
 }
 
+/* Wrapper tabel untuk scroll horizontal (responsive) */
 .tabel-wrapper {
   overflow-x: auto;
 }
 
+/* Tabel riwayat dengan lebar minimum agar bisa scroll */
 .tabel-riwayat {
   min-width: 800px;
 }
 
+/* Badge status pesanan */
 .tabel-riwayat .badge-status {
   background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
   color: #2e7d32;
@@ -708,6 +759,7 @@ td {
   font-weight: 600;
 }
 
+/* Total harga dengan gradient oranye */
 .tabel-riwayat .total-harga {
   font-weight: 700;
   background: linear-gradient(135deg, #ff9800, #f57c00);
@@ -717,10 +769,12 @@ td {
 }
 
 /* ==================== TOMBOL AKSI ==================== */
+/* Kolom aksi (tombol edit dan hapus) tidak boleh wrap */
 .aksi-column {
   white-space: nowrap;
 }
 
+/* Tombol edit dengan gradien oranye */
 .btn-edit {
   background: linear-gradient(135deg, #ff9800, #f57c00);
   color: white;
@@ -739,6 +793,7 @@ td {
   box-shadow: 0 4px 12px rgba(255, 152, 0, 0.4);
 }
 
+/* Tombol hapus dengan gradien merah */
 .btn-hapus {
   background: linear-gradient(135deg, #f44336, #d32f2f);
   color: white;
@@ -757,6 +812,7 @@ td {
 }
 
 /* ==================== RIWAYAT KOSONG ==================== */
+/* Tampilan saat tidak ada data riwayat */
 .riwayat-kosong {
   text-align: center;
   padding: 4rem;
@@ -776,6 +832,7 @@ td {
   margin-bottom: 1.5rem;
 }
 
+/* Tombol link ke halaman layanan */
 .btn-ke-layanan {
   background: linear-gradient(135deg, #4caf50, #2e7d32);
   color: white;
@@ -793,6 +850,7 @@ td {
 }
 
 /* ==================== FOOTER ==================== */
+/* Footer dengan background gradien dan ikon jejak hewan */
 footer {
   background: linear-gradient(135deg, #1b5e20, #2e7d32);
   color: white;
@@ -815,7 +873,8 @@ footer::before {
   letter-spacing: 10px;
 }
 
-/* ==================== RESPONSIVE ==================== */
+/* ==================== RESPONSIVE DESIGN ==================== */
+/* Tablet (max-width: 768px) */
 @media (max-width: 768px) {
   header h1 {
     font-size: 2rem;
@@ -825,11 +884,13 @@ footer::before {
     font-size: 1.6rem;
   }
   
+  /* Navigasi lebih kecil */
   nav ul li a {
     padding: 0.7rem 1rem;
     font-size: 0.9rem;
   }
   
+  /* Grid layanan jadi 1 kolom */
   .layanan-grid {
     grid-template-columns: 1fr;
   }
@@ -839,11 +900,13 @@ footer::before {
     margin: 1rem;
   }
   
+  /* Header riwayat vertikal */
   .riwayat-header {
     flex-direction: column;
     align-items: flex-start;
   }
   
+  /* Jadwal list jadi vertikal */
   .jadwal-list li {
     flex-direction: column;
     align-items: flex-start;
@@ -859,15 +922,18 @@ footer::before {
   }
 }
 
+/* Mobile kecil (max-width: 480px) */
 @media (max-width: 480px) {
   main {
     padding: 0 1rem;
   }
   
+  /* Info grid jadi 1 kolom */
   .info-grid {
     grid-template-columns: 1fr;
   }
   
+  /* Tabel font lebih kecil */
   th, td {
     padding: 0.6rem;
     font-size: 0.8rem;
@@ -881,6 +947,7 @@ footer::before {
     font-size: 60px;
   }
   
+  /* Tombol aksi lebih kecil */
   .btn-edit, .btn-hapus {
     padding: 0.3rem 0.7rem;
     font-size: 0.7rem;

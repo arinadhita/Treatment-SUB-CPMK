@@ -4,42 +4,52 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIYAZoo - Layanan</title>
+  <!-- Menghubungkan file CSS eksternal untuk styling -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <!-- ===================== HEADER ===================== -->
   <header>
     <h1>🦁 SIYAZoo</h1>
     <p>Sistem Informasi Layanan Zoo (Kebun Binatang)</p>
   </header>
 
+  <!-- ===================== NAVIGASI ===================== -->
   <nav>
     <ul>
       <li><a href="index.html">Beranda</a></li>
+      <!-- class="active" menandakan halaman layanan sedang aktif -->
       <li><a href="layanan.html" class="active">Layanan</a></li>
       <li><a href="riwayat.html">Riwayat Pemesanan</a></li>
     </ul>
   </nav>
 
+  <!-- ===================== KONTEN UTAMA ===================== -->
   <main>
 
+    <!-- HERO SECTION: Banner utama halaman layanan -->
     <section class="layanan-hero fade-in">
       <h2>🎟️ Layanan SIYAZoo</h2>
       <p>Pilih layanan yang sesuai dan pesan tiket kunjunganmu dengan mudah!</p>
     </section>
 
+    <!-- SECTION: Daftar Layanan (6 jenis layanan) -->
     <section class="fade-in" style="animation-delay: 0.1s;">
       <h2>Pilih Layanan</h2>
       <div class="layanan-grid">
 
+        <!-- LAYANAN 1: Tiket Reguler -->
         <div class="layanan-card">
           <div class="layanan-icon">🎫</div>
           <h3>Tiket Reguler</h3>
           <p>Nikmati seluruh area kebun binatang sepuasnya. Cocok untuk kunjungan santai bersama keluarga atau teman.</p>
           <span class="badge-harga">Mulai Rp 25.000</span>
+          <!-- onclick memanggil fungsi bukaModal() dari script.js -->
           <button class="btn-pesan" onclick="bukaModal('Tiket Reguler', 25000)">Pesan Sekarang</button>
         </div>
 
+        <!-- LAYANAN 2: Tiket VIP -->
         <div class="layanan-card">
           <div class="layanan-icon">⭐</div>
           <h3>Tiket VIP</h3>
@@ -48,6 +58,7 @@
           <button class="btn-pesan" onclick="bukaModal('Tiket VIP', 150000)">Pesan Sekarang</button>
         </div>
 
+        <!-- LAYANAN 3: Paket Keluarga -->
         <div class="layanan-card">
           <div class="layanan-icon">👨‍👩‍👧‍👦</div>
           <h3>Paket Keluarga</h3>
@@ -56,14 +67,17 @@
           <button class="btn-pesan" onclick="bukaModal('Paket Keluarga', 120000)">Pesan Sekarang</button>
         </div>
 
+        <!-- LAYANAN 4: Paket Rombongan -->
         <div class="layanan-card">
           <div class="layanan-icon">🚌</div>
           <h3>Paket Rombongan</h3>
           <p>Khusus untuk grup minimal 20 orang. Diskon 20% dari harga normal, cocok untuk study tour atau acara kantor.</p>
           <span class="badge-harga">Diskon 20% (min. 20 orang)</span>
+          <!-- Harga 0 karena diskon, akan dihitung manual nanti -->
           <button class="btn-pesan" onclick="bukaModal('Paket Rombongan', 0)">Pesan Sekarang</button>
         </div>
 
+        <!-- LAYANAN 5: Feeding Experience -->
         <div class="layanan-card">
           <div class="layanan-icon">🐾</div>
           <h3>Feeding Experience</h3>
@@ -72,6 +86,7 @@
           <button class="btn-pesan" onclick="bukaModal('Feeding Experience', 75000)">Pesan Sekarang</button>
         </div>
 
+        <!-- LAYANAN 6: Wisata Edukasi -->
         <div class="layanan-card">
           <div class="layanan-icon">🔬</div>
           <h3>Wisata Edukasi</h3>
@@ -83,6 +98,7 @@
       </div>
     </section>
 
+    <!-- SECTION: Informasi Tambahan/Catatan Pemesanan -->
     <section class="fade-in" style="animation-delay: 0.2s;">
       <div class="info-tambahan">
         <h3>📌 Catatan Pemesanan</h3>
@@ -98,23 +114,27 @@
 
   </main>
 
+  <!-- ===================== FOOTER ===================== -->
   <footer>
     <p>&copy; 2026 SIYAZoo &mdash; Sistem Informasi Layanan Zoo (Kebun Binatang)</p>
     <p>Jl. Anggrek Raya No. 9, Kota Malaka | (061) 555-1289 | info@siyazoo.id</p>
   </footer>
 
-
-  <!-- MODAL FORM PEMESANAN -->
+  <!-- ===================== MODAL FORM PEMESANAN ===================== -->
+  <!-- Modal: popup form yang muncul saat tombol "Pesan Sekarang" diklik -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal-box">
+      <!-- Tombol tutup modal (X) -->
       <button class="btn-tutup" onclick="tutupModal()">✕</button>
+      <!-- Judul modal akan diisi dinamis oleh JavaScript -->
       <h3 id="modalJudul">Pesan Tiket</h3>
 
+      <!-- Form input untuk data pemesanan -->
       <label for="inputNama">Nama Lengkap</label>
-      <input type="text" id="inputNama" placeholder="contoh: Arina Dhita" />
+      <input type="text" id="inputNama" placeholder="contoh: Arinadhita" />
 
       <label for="inputEmail">Email</label>
-      <input type="email" id="inputEmail" placeholder="contoh: arina@gmail.com" />
+      <input type="email" id="inputEmail" placeholder="contoh: arinadhita@gmail.com" />
 
       <label for="inputTanggal">Tanggal Kunjungan</label>
       <input type="date" id="inputTanggal" />
@@ -126,12 +146,13 @@
       <select id="inputPembayaran">
         <option value="">-- Pilih Metode --</option>
         <option>Transfer Bank (BCA)</option>
-        <option>Transfer Bank (Mandiri)</option>
+        <option>Transfer Bank (BRI)</option>
         <option>GoPay</option>
         <option>OVO</option>
         <option>DANA</option>
       </select>
 
+      <!-- Tombol aksi di dalam modal -->
       <div class="modal-footer">
         <button class="btn-batal" onclick="tutupModal()">Batal</button>
         <button class="btn-konfirmasi" onclick="konfirmasiPesan()">Konfirmasi Pesan</button>
@@ -139,6 +160,7 @@
     </div>
   </div>
 
-<script src="script.js"></script>
+  <!-- Menghubungkan file JavaScript eksternal untuk semua fungsi interaktif -->
+  <script src="script.js"></script>
 </body>
 </html>

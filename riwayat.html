@@ -4,38 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SIYAZoo - Riwayat Pemesanan</title>
+  <!-- Menghubungkan file CSS eksternal untuk styling -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+  <!-- ===================== HEADER ===================== -->
   <header>
     <h1>🦁 SIYAZoo</h1>
     <p>Sistem Informasi Layanan Zoo (Kebun Binatang)</p>
   </header>
 
+  <!-- ===================== NAVIGASI ===================== -->
   <nav>
     <ul>
       <li><a href="index.html">Beranda</a></li>
       <li><a href="layanan.html">Layanan</a></li>
+      <!-- class="active" menandakan halaman riwayat sedang aktif -->
       <li><a href="riwayat.html" class="active">Riwayat Pemesanan</a></li>
     </ul>
   </nav>
 
+  <!-- ===================== KONTEN UTAMA ===================== -->
   <main>
     <section class="fade-in">
+      <!-- Header riwayat dengan judul dan tombol hapus semua -->
       <div class="riwayat-header">
         <h2>📋 Riwayat Pemesanan</h2>
+        <!-- Tombol untuk menghapus semua data riwayat -->
         <button class="btn-hapus-semua" id="btnHapusSemua">🗑️ Hapus Semua</button>
       </div>
+      <!-- Tempat tabel riwayat akan di-render oleh JavaScript -->
       <div id="kontenRiwayat"></div>
     </section>
   </main>
 
+  <!-- ===================== FOOTER ===================== -->
   <footer>
     <p>&copy; 2026 SIYAZoo &mdash; Sistem Informasi Layanan Zoo (Kebun Binatang)</p>
     <p>Jl. Anggrek Raya No. 9, Kota Malaka | (061) 555-1289 | info@siyazoo.id</p>
   </footer>
 
+  <!-- Menghubungkan file JavaScript eksternal untuk fungsi CRUD riwayat -->
   <script src="script.js"></script>
 </body>
 </html>

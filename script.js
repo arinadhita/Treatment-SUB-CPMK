@@ -265,7 +265,7 @@ function hapusPesanan(id) {
   let riwayat = localStorage.getItem('siyazoo_riwayat');
   riwayat = riwayat ? JSON.parse(riwayat) : [];
   
-  // Cari index data dengan ID yang sesuai
+  // cari index data 
   let indexHapus = -1;
   for (let i = 0; i < riwayat.length; i++) {
     if (riwayat[i].id === id) {
@@ -275,10 +275,9 @@ function hapusPesanan(id) {
   }
   
   if (indexHapus !== -1) {
-    // Hapus data dari array
+    // hapus data dari array
     riwayat.splice(indexHapus, 1);
     localStorage.setItem('siyazoo_riwayat', JSON.stringify(riwayat));
-    alert('✅ Pesanan berhasil dihapus!');
     tampilkanRiwayat(); // Refresh tabel
   }
 }
@@ -300,10 +299,11 @@ function hapusSemua() {
  * @param {string} id - ID pesanan yang akan diedit
  */
 function editPesanan(id) {
+  // Mencari data berdasarkan ID
   let riwayat = localStorage.getItem('siyazoo_riwayat');
   riwayat = riwayat ? JSON.parse(riwayat) : [];
   
-  // Cari data dengan ID yang sesuai
+  // cari data dengan ID yang sesuai
   let data = null;
   for (let i = 0; i < riwayat.length; i++) {
     if (riwayat[i].id === id) {
@@ -312,16 +312,14 @@ function editPesanan(id) {
     }
   }
   
+  // set varianel mode edit
   if (data) {
-    // Set variabel mode edit
     modeEdit = true;
     idEdit = id;
     layananDipilih = data.layanan;
     hargaDipilih = data.harga;
-    // Buka modal dengan data pesanan yang akan diedit
+    // buka modal dengan data pesanan yang akan diedit
     bukaModal(data.layanan, data.harga, data);
-  } else {
-    alert('Data tidak ditemukan!');
   }
 }
 
@@ -372,10 +370,12 @@ document.addEventListener('DOMContentLoaded', function() {
     tampilkanRiwayat();
   }
   
-  // Event untuk tombol Hapus Semua
+  // Event Listener untuk tombol Hapus Semua
   const btnHapusSemua = document.getElementById('btnHapusSemua');
   if (btnHapusSemua) {
-    btnHapusSemua.onclick = function() { hapusSemua(); };
+    btnHapusSemua.onclick = function() { 
+      hapusSemua(); 
+    };
   }
   
   /**
@@ -404,7 +404,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   });
-});
+}); 
 
 // Konfirmasi bahwa script.js berhasil dijalankan
 console.log('Script.js berhasil dijalankan!');
